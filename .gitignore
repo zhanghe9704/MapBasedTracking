@@ -1,0 +1,10 @@
+*.cbp
+*.so
+*.layout
+*.depend
+*.o
+*.a
+*.dll
+*.def
+/cbp
+/build
