@@ -1,0 +1,97 @@
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\begin{document}
+
+\title{Phase space coordinate translation between PTC, MAD-X and COSY Infinity
+9.1}
+
+\maketitle
+The coordinates in the 6D phase space of COSY Infinity 9.1 are defined
+as follows. 
+
+$r_{1}=x$,
+
+$r_{2}=p_{x}/p_{0}$,
+
+$r_{3}=y$,
+
+$r_{4}=p_{y}/p_{0}$,
+
+$r_{5}=l=-(t-t_{0})v_{0}\gamma/(1+\gamma)$,
+
+$r_{6}=\delta_{k}=(K-K_{0})/K_{0}$,
+
+where $p_{0}$, $K_{0}$, $v_{0}$, $t_{0}$ and $\gamma$ are the
+momentum, kinetic energy, velocity, time of flight, and total energy
+over $m_{0}c^{2}$, respectively, of the reference particle. The six
+variables form three canoically conjungate pairs. 
+
+The coordintes of MAD-X are defined as follows.
+
+$X=x$,
+
+$PX=p_{x}/p_{0}$,
+
+$Y=y$,
+
+$PY=p_{y}/p_{0}$,
+
+$T=-c\cdot\delta t$,
+
+$PT=\delta E/cp_{0}$,
+
+where $\delta t$ and $\Delta E$ are the time difference and energy
+difference with respect to the reference particle. $\delta t=t-t_{0}$
+and $\delta E=K-K_{0}$. 
+
+PTC uses the following coordinates: (PTC can use other coordinates.
+But we assume it uses the following ones for our convenience.)
+
+$X1=x$,
+
+$X2=p_{x}/p_{0}$,
+
+$X3=y$,
+
+$X4=p_{y}/p_{0}$,
+
+$X5=\delta E/cp_{0}$,
+
+$X6=c\cdot\delta t$
+
+Comparing the above three group of coordinates, the first four are
+exactly the same. But the last two coordinates are defined defferently.
+Using the relation $\beta=v_{0}/c=\sqrt{1-1/\gamma^{2}}$, one can
+find the relation between $r_{5}$ and $T$. 
+\[
+r_{5}=-\delta t\frac{v_{0}\gamma}{1+\gamma}=\frac{T}{c}\frac{v_{0}\gamma}{1+\gamma}=T\frac{\beta\gamma}{1+\gamma}=T\sqrt{\frac{\gamma-1}{\gamma+1}}.
+\]
+Finding the relation between $r_{6}$ and $PT$ is also straightforward.
+Using 
+\[
+K_{0}=cp_{0}\sqrt{\frac{\gamma-1}{\gamma+1}},
+\]
+We get
+\[
+r_{6}=\frac{\delta E}{K_{0}}=\frac{\delta E}{cp_{0}}\sqrt{\frac{\gamma+1}{\gamma-1}}=PT\sqrt{\frac{\gamma+1}{\gamma-1}}.
+\]
+The above relations allow us to convert from MAD-X coordinates to
+COSY Infnity coordinates. It is easy to see the relation between PTC
+coordinates and MAD-X coordinates is:
+\[
+X5=PT,\ \ \ X6=-T.
+\]
+And the relation between COSY Infinity 9.x is 
+\[
+r_{5}=-X6\sqrt{\frac{\gamma-1}{\gamma+1}},\ \ \ \ r_{6}=X5\sqrt{\frac{\gamma+1}{\gamma-1}}.
+\]
+
+
+It is good to see the translation is linear, which means the trancated
+map using one group of coordinates can be converted into a map using
+the other group of coordinates without introducing errors. 
+\end{document}

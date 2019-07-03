@@ -233,7 +233,7 @@ void applyMap(const int dim, double * xi, vector<Map> &map, double * xf){
     vector<vector<double> > xn(2*dim, vector<double>(order+1));
     for(int i=0; i<2*dim; ++i) {
         xn[i][0] = 1;
-        for(int j=1; j<map.at(i).getTotalOrder()+1; ++j) {
+        for(int j=1; j<order+1; ++j) {
             xn[i][j] = xi[i]*xn[i][j-1];
         }
     }

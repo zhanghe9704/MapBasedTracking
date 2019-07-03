@@ -23,7 +23,7 @@ int main() {
     for(auto &v: trunc_map)
         std::cout<<v<<std::endl;
 
-    //Convert the map into a group of da vectors.
+    //Convert the map into a group of da vectors. (For demonstration. No necessary to perform tracking.)
     vector<DAVector> da_map(da_dim);
     for(int i=0; i<da_dim; ++i) {
             map2da(trunc_map.at(i), da_map.at(i));

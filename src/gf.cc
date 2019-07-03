@@ -210,6 +210,7 @@ void gf_eqns(std::vector<DAVector>& ivecs, int dim, const int type, std::vector<
         std::cout<< "Wrong selection of generating function!" <<std::endl;
     }
     }
+    da_change_order(DAVector::order()-1);
 }
 
 void generating_function(std::vector<DAVector>& ivecs, int dim, const int type, DAVector& gf) {

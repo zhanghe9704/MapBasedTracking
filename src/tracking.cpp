@@ -125,10 +125,22 @@ void gf4Eqns (double * xf, void * p, double * f){
 //	delete[] x;
 }
 
-//Symplectic tracking
-//dim - dimenstion of the problem, xi - initial coordinates, eqns - equations of GF2 to solve, map - the truncated map
-//xf - final coordinates, nIter - max iteration time for Newton solver, delta - tolerance for Newton solver
-//nTrk - trakcing times, outToFile - output to file or screen, filename - file to output data, nFreq - output every nFreq times
+/** \brief Perform symplectic tracking.
+ *
+ * \param dim - Dimension of the dynamic system.
+ * \param xi - Initial coordinates.
+ * \param map - Truncated map
+ * \param type - Type of the generating function, 1, 2, 3, or 4.
+ * \param nTrk - Number of turns to track.
+ * \param xf - Final coordinates.
+ * \param outToFile - Whether to write the tracking result to a file.
+ * \param filename - File to save the tracking result.
+ * \param nFreq - Save the result every nFreq turns.
+ * \param nIter - Max number of iterations in Newton solver.
+ * \param delta - Tolerance of the Newton solver.
+ * \return 0.
+ *
+ */
 int sympTrack(const int dim, double * xi, vector<Map> &tr_map, int type, const int nTrk, double * xf, bool outToFile,
               char * filename, const int nFreq, const int nIter, const double delta){
 
@@ -217,7 +229,20 @@ int sympTrack(const int dim, double * xi, vector<Map> &tr_map, int type, const i
 	return 0;
 }
 
-
+/** \brief Perform symplectic tracking.
+ *
+ * \param dim - Dimension of the dynamic system.
+ * \param xi - Initial coordinates.
+ * \param map - Truncated map
+ * \param eqns - The differential equations derived from the generating function.
+ * \param type - Type of the generating function, 1, 2, 3, or 4.
+ * \param n_turn - Number of turns to track.
+ * \param xf - Final coordiantes.
+ * \param nIter - Max number of iterations in Newton solver.
+ * \param delta - Tolerance of the Newton solver.
+ * \return 0.
+ *
+ */
 int sympTrack(const int dim, double * xi, vector<Map> &tr_map, vector<Map> &eqns, int type, const int n_turn, double * xf,
               const int n_iter, const double delta){
 
@@ -226,10 +251,8 @@ int sympTrack(const int dim, double * xi, vector<Map> &tr_map, vector<Map> &eqns
     double * xt = &vec_xt[0];
     double * x = &vec_x[0];
 
-//    double * xt = new double [2*dim];
 	struct gfParas p = {&eqns, xi, dim, xt};
 
-//	double * x = new double[2*dim];
 	for(int i=0; i<2*dim;++i) x[i] = xi[i];
 	void (*pFunc)(double *, void *, double *) = nullptr;
 	switch(type) {
@@ -261,26 +284,11 @@ int sympTrack(const int dim, double * xi, vector<Map> &tr_map, vector<Map> &eqns
 		p = {&eqns, x, dim, xt};
 	}
 
-//	delete[] x;
-//	delete[] xt;
 	return 0;
 }
 
 void gfun(const int dim, vector<Map> &tr_map, int type, vector<Map> &eqns){
-
 	int da_dim = 2*dim;
-	int da_order = 0;
-	for(auto& v: tr_map) {
-//        std::cout<<v;
-//        std::cout<<"=================="<<std::endl;
-        if(v.getTotalOrder()>da_order)
-            da_order = v.getTotalOrder();
-	}
-	int da_scratch = 1000;
-
-    da_order += 1;
-	da_init(da_order, da_dim, da_scratch);
-	da_change_order(da_order-1);
 
 	std::vector<DAVector> da_eqns(da_dim);
 	std::vector<DAVector> da_map(da_dim);
@@ -289,36 +297,32 @@ void gfun(const int dim, vector<Map> &tr_map, int type, vector<Map> &eqns){
         map2da(tr_map.at(i), da_map.at(i));
         da_map.at(i) = da_map.at(i) - da_map.at(i).con();
 	}
+
 	gf_eqns(da_map, dim, type, da_eqns);
 
 	for(int i=0; i<da_dim; ++i)
         da2map(da_eqns.at(i), eqns.at(i));
-
-    da_clear();
-
 }
 
-void trans_madx_to_cosy(double gamma, std::vector<DAVector> &trans) {
-    trans.resize(6);
-    trans.at(0) = da[0];
-    trans.at(1) = da[1];
-    trans.at(2) = da[2];
-    trans.at(3) = da[3];
-
-    double tmp = sqrt((gamma-1)/(gamma+1));
-    trans.at(4) = da[4]*tmp;
-    trans.at(5) = da[5]*gamma/tmp;
+void map_ptc_to_madx(vector<Map>& ptc_map, vector<Map>& madx_map) {
+    int da_dim = 6;
+    vector<DAVector> da_ptc_map(da_dim);
+    vector<DAVector> da_madx_map(da_dim);
+    for(int i=0; i<da_dim; ++i)
+        map2da(ptc_map.at(i), da_ptc_map.at(i));
+    da_map_ptc_to_madx(da_ptc_map, da_madx_map);
+    for(int i=0; i<da_dim; ++i)
+        da2map(da_madx_map.at(i), madx_map.at(i));
 }
 
-void trans_cosy_to_madx(double gamma, std::vector<DAVector> &trans) {
-    trans.resize(6);
-    trans.at(0) = da[0];
-    trans.at(1) = da[1];
-    trans.at(2) = da[2];
-    trans.at(3) = da[3];
-
-    double tmp = sqrt((gamma-1)/(gamma+1));
-    trans.at(4) = da[4]/tmp;
-    trans.at(5) = da[5]*tmp;
+void map_cosy_to_madx(vector<Map>& cosy_map, double gamma, vector<Map>& madx_map) {
+    int da_dim = 6;
+    vector<DAVector> da_cosy_map(da_dim);
+    vector<DAVector> da_madx_map(da_dim);
+    for(int i=0; i<da_dim; ++i)
+        map2da(cosy_map.at(i), da_cosy_map.at(i));
+    da_map_cosy_to_madx(da_cosy_map, gamma, da_madx_map);
+    for(int i=0; i<da_dim; ++i)
+        da2map(da_madx_map.at(i), madx_map.at(i));
 }
 

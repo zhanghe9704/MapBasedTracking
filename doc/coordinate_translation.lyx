@@ -1,0 +1,351 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Phase space coordinate translation between PTC, MAD-X and COSY Infinity
+ 9.1
+\end_layout
+
+\begin_layout Standard
+The coordinates in the 6D phase space of COSY Infinity 9.1 are defined as
+ follows.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r_{1}=x$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r_{2}=p_{x}/p_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r_{3}=y$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r_{4}=p_{y}/p_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r_{5}=l=-(t-t_{0})v_{0}\gamma/(1+\gamma)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r_{6}=\delta_{k}=(K-K_{0})/K_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $K_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ are the momentum, kinetic energy, velocity, time of flight, and total energy
+ over 
+\begin_inset Formula $m_{0}c^{2}$
+\end_inset
+
+, respectively, of the reference particle.
+ The six variables form three canoically conjungate pairs.
+ 
+\end_layout
+
+\begin_layout Standard
+The coordintes of MAD-X are defined as follows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X=x$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $PX=p_{x}/p_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Y=y$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $PY=p_{y}/p_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T=-c\cdot\delta t$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $PT=\delta E/cp_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta E$
+\end_inset
+
+ are the time difference and energy difference with respect to the reference
+ particle.
+ 
+\begin_inset Formula $\delta t=t-t_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta E=K-K_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+PTC uses the following coordinates: (PTC can use other coordinates.
+ But we assume it uses the following ones for our convenience.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X1=x$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X2=p_{x}/p_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X3=y$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X4=p_{y}/p_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X5=\delta E/cp_{0}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X6=c\cdot\delta t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comparing the above three group of coordinates, the first four are exactly
+ the same.
+ But the last two coordinates are defined defferently.
+ Using the relation 
+\begin_inset Formula $\beta=v_{0}/c=\sqrt{1-1/\gamma^{2}}$
+\end_inset
+
+, one can find the relation between 
+\begin_inset Formula $r_{5}$
+\end_inset
+
+ and 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+r_{5}=-\delta t\frac{v_{0}\gamma}{1+\gamma}=\frac{T}{c}\frac{v_{0}\gamma}{1+\gamma}=T\frac{\beta\gamma}{1+\gamma}=T\sqrt{\frac{\gamma-1}{\gamma+1}}.
+\]
+
+\end_inset
+
+Finding the relation between 
+\begin_inset Formula $r_{6}$
+\end_inset
+
+ and 
+\begin_inset Formula $PT$
+\end_inset
+
+ is also straightforward.
+ Using 
+\begin_inset Formula 
+\[
+K_{0}=cp_{0}\sqrt{\frac{\gamma-1}{\gamma+1}},
+\]
+
+\end_inset
+
+We get
+\begin_inset Formula 
+\[
+r_{6}=\frac{\delta E}{K_{0}}=\frac{\delta E}{cp_{0}}\sqrt{\frac{\gamma+1}{\gamma-1}}=PT\sqrt{\frac{\gamma+1}{\gamma-1}}.
+\]
+
+\end_inset
+
+The above relations allow us to convert from MAD-X coordinates to COSY Infnity
+ coordinates.
+ It is easy to see the relation between PTC coordinates and MAD-X coordinates
+ is:
+\begin_inset Formula 
+\[
+X5=PT,\ \ \ X6=-T.
+\]
+
+\end_inset
+
+And the relation between COSY Infinity 9.x is 
+\begin_inset Formula 
+\[
+r_{5}=-X6\sqrt{\frac{\gamma-1}{\gamma+1}},\ \ \ \ r_{6}=X5\sqrt{\frac{\gamma+1}{\gamma-1}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is good to see the translation is linear, which means the trancated map
+ using one group of coordinates can be converted into a map using the other
+ group of coordinates without introducing errors.
+ 
+\end_layout
+
+\end_body
+\end_document
