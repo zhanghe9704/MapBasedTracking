@@ -6,7 +6,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### About the code
 
-**This library is obsolete. Please use the [map_based_method lib](https://github.com/zhanghe9704/map_based_method). **
+__This library is obsolete. Please use the [map_based_method lib](https://github.com/zhanghe9704/map_based_method). __
 
 
 
